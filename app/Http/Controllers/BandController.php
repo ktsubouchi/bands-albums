@@ -32,6 +32,18 @@ class BandController extends Controller
     }
 	
 	/**
+	 * Renders the create band page.
+	 * 
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function create()
+	{
+		$band = new Band;
+		
+		return view('band.create', compact('band'));
+    }
+	
+	/**
 	 * Deletes an album.
 	 * 
 	 * @param $id
@@ -47,6 +59,13 @@ class BandController extends Controller
 		$band->delete();
     }
 	
+	/**
+	 * Renders the band edit page.
+	 * 
+	 * @param $id
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function edit($id)
 	{
 		$band = Band::findOrFail($id);
@@ -54,6 +73,33 @@ class BandController extends Controller
 		return view('band.edit', compact('band'));
 	}
 	
+	/**
+	 * Validates and stores a new band.
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
+	public function store(Request $request)
+	{
+		$band = new Band;
+		
+		$this->validate($request, $band->rules);
+		
+		$band->fill($request->except('_token'));
+		$band->save();
+		
+		return redirect('/');
+	}
+	
+	/**
+	 * Validates input and updates the band.
+	 * 
+	 * @param         $id
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
 	public function update($id, Request $request)
 	{
 		$band = Band::findOrFail($id);

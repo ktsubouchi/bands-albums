@@ -5,7 +5,7 @@
         <span class="page-title">Bands</span>
 
         <span class="page-options">
-            <a href="#"><i class="fa fa-plus"></i> Add Band</a>
+            <a href="{{ action('BandController@create') }}"><i class="fa fa-plus"></i> Add Band</a>
         </span>
 
         <hr>
