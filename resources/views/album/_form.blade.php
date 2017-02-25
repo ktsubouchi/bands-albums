@@ -62,7 +62,7 @@
     <div class="form-group">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <button class="btn btn-primary">{{ $submitButtonText }}</button>
+            <button class="btn btn-success">{{ $submitButtonText }}</button>
         </div>
     </div>
 </div>
