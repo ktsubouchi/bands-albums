@@ -16,4 +16,5 @@ Route::get('albums', 'SiteController@albums');
 
 Route::group(['prefix' => 'ajax'], function(){
 	Route::get('bands', 'BandController@ajaxGetBands');
+	Route::get('albums', 'AlbumController@ajaxGetAlbums');
 });
