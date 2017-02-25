@@ -27,7 +27,8 @@
 
 @push('js')
 <script>
-    $("#bands-grid")
+    // Initialize the datatable.
+    var $bandsGrid = $("#bands-grid")
         .DataTable({
             processing: false,
             serverSide: false,
@@ -40,10 +41,23 @@
                 {data:'start_date'},
                 {data:'website'},
                 {data:'still_active'}
-            ],
-            fnInitComplete: function(){
-                //$("#bands-grid").dataTable().fnAdjustColumnSizing();
-            }
+            ]
+        })
+        .on('click', '.delete-band', function(e){
+            e.preventDefault();
+            var pk = $(this).data('pk');
+            
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('band') }}/' + pk + '/delete',
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(){
+                    $bandsGrid.ajax.reload();
+                },
+                error: function(r){
+                    $("html").html(r.responseText);
+                }
+            })
         })
 </script>
 @endpush

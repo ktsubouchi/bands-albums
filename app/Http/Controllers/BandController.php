@@ -22,12 +22,22 @@ class BandController extends Controller
 				return "<a href='' ><i class='fa fa-fw fa-pencil'</a>";
 			})
 			->addColumn('delete', function($band){
-				return "<a href='' ><i class='fa fa-fw fa-trash'</a>";
+				return "<a href='#' class='delete-band' data-pk='$band->id'><i class='fa fa-fw fa-trash'</a>";
 			})
 			->editColumn('website', function($band){
 				return "<a href='$band->website'>$band->website</a>";
 			})
 			->rawColumns(['edit', 'delete', 'website'])
 			->make(true);
+    }
+	
+	/**
+	 * Deletes an album.
+	 * 
+	 * @param $id
+	 */
+	public function delete($id)
+	{
+		Band::destroy($id);
     }
 }
