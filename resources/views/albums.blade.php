@@ -5,7 +5,7 @@
         <span class="page-title">Albums</span>
 
         <span class="page-options">
-            
+            <a href="{{ action('AlbumController@create') }}"><i class="fa fa-plus"></i> New Album</a>
         </span>
 
         <hr>

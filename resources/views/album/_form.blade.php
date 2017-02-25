@@ -1,6 +1,6 @@
 <div class="form-horizontal">
     <div class="form-group {{ $errors->has('band_id') ? 'has-error' : '' }}">
-        {{ Form::label('band_id', 'Band', ['class' => 'col-md-2 control-label']) }}
+        {{ Form::label('band_id', 'Band', ['class' => 'required col-md-2 control-label']) }}
         <div class="col-md-10">
             {{ Form::select('band_id', $bandSelectData, $album->band_id, ['class' => 'form-control']) }}
             <span id="band-help">@if($errors->has('band_id')){{ $errors->first('band_id') }}@endif</span>

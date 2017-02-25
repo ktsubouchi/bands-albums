@@ -31,6 +31,19 @@ class AlbumController extends Controller
     }
 	
 	/**
+	 * Renders the album create page.
+	 * 
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function create()
+	{
+		$album = new Album;
+		$bandSelectData = Band::all()->pluck('name', 'id');
+		
+		return view('album.create', compact('album', 'bandSelectData'));
+    }
+	
+	/**
 	 * Deletes an album.
 	 * 
 	 * @param $id
@@ -56,7 +69,26 @@ class AlbumController extends Controller
     }
 	
 	/**
-	 * Updates an album.
+	 * Validates and creates and album.
+	 * 
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
+	public function store(Request $request)
+	{
+		$album = new Album;
+		
+		$this->validate($request, $album->rules);
+		
+		$album->fill($request->except('_token'));
+		$album->save();
+		
+		return redirect('albums');
+    }
+	
+	/**
+	 * Validates and updates an album.
 	 *
 	 * @param         $id
 	 *

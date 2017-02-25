@@ -19,6 +19,8 @@ Route::get('band/{id}/edit', 'BandController@edit');
 Route::post('band/{id}/update', 'BandController@update');
 
 Route::get('albums', 'SiteController@albums');
+Route::get('album/create', 'AlbumController@create');
+Route::post('album/store', 'AlbumController@store');
 Route::post('album/{id}/delete', 'AlbumController@delete');
 Route::get('album/{id}/edit', 'AlbumController@edit');
 Route::post('album/{id}/update', 'AlbumController@update');
