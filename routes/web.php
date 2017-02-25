@@ -13,4 +13,6 @@
 
 Route::get('/', 'SiteController@index');
 
-
+Route::group(['prefix' => 'ajax'], function(){
+	Route::get('bands', 'BandController@ajaxGetBands');
+});
