@@ -1,0 +1,19 @@
+.page-options{
+    margin-left: 30px;
+}
+
+.page-options > a{
+    text-decoration: none;
+    margin: 0 10px;
+    color: #636b6f;
+}
+
+.page-sub-title{
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.page-title{
+    font-size: 48px;
+    font-weight: 100;
+}
