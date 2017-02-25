@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Band;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -21,6 +22,8 @@ class SiteController extends Controller
 	 */
 	public function albums()
 	{
-		return view('albums');
+		$bandFilterData = Band::all();
+		
+		return view('albums', compact('bandFilterData'));
     }
 }
