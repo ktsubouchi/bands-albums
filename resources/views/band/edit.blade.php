@@ -22,7 +22,7 @@
         <hr>
 
         {{ Form::model($band, ['action' => ['BandController@update', 'id' => $band->id]]) }}
-            @include('band._form')
+            @include('band._form', ['submitButtonText' => 'Update'])
         {{ Form::close() }}
     </div>
 @endsection
