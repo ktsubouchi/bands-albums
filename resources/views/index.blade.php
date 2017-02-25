@@ -6,6 +6,7 @@
 
         <span class="page-options">
             <a href="#"><i class="fa fa-plus"></i> Add Band</a>
+            <a href="{{ action('SiteController@albums') }}"><i class="fa fa-bars"></i> Albums</a>
         </span>
 
         <hr>
