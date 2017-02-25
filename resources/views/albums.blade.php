@@ -21,6 +21,8 @@
         <table id="albums-grid" class="table">
             <thead>
                 <tr>
+                    <th></th>
+                    <th></th>
                     <th>Name</th>
                     <th>Band</th>
                     <th class="no-search">Recorded</th>
@@ -43,7 +45,10 @@
             serverSide: false,
             dom: 'tp',
             ajax: '{{ action('AlbumController@ajaxGetAlbums') }}',
+            order: [[2, 'asc']],
             columns: [
+                {data:'edit', searchable:false, sortable:false, width:'20px'},
+                {data:'delete', searchable:false, sortable:false, width:'20px'},
                 {data:'name'},
                 {data:'band_id'},
                 {data:'recorded_date'},
@@ -53,6 +58,18 @@
                 {data:'producer'},
                 {data:'genre'}
             ]
+        })
+        .on('click', '.delete-album', function(e){
+            e.preventDefault();
+            
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('album') }}/' + $(this).data('pk') + '/delete',
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(){
+                    $albumGrid.ajax.reload();
+                }
+            })
         });
     
     $("#band-filter").change(function(){

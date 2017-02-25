@@ -19,6 +19,7 @@ Route::get('band/{id}/edit', 'BandController@edit');
 Route::post('band/{id}/update', 'BandController@update');
 
 Route::get('albums', 'SiteController@albums');
+Route::post('album/{id}/delete', 'AlbumController@delete');
 
 Route::group(['prefix' => 'ajax'], function(){
 	Route::get('bands', 'BandController@ajaxGetBands');
