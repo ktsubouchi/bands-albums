@@ -17,6 +17,11 @@ class BandController extends Controller
 	{
 		$bands = Band::all();
 		
-		return Datatables::of($bands)->make(true);
+		return Datatables::of($bands)
+			->editColumn('website', function($band){
+				return "<a href='$band->website'>$band->website</a>";
+			})
+			->rawColumns(['website'])
+			->make(true);
     }
 }
