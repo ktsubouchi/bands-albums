@@ -1,8 +1,9 @@
 <div class="form-horizontal">
-    <div class="form-group">
-        {{ Form::label('name', 'Name', ['class' => 'col-md-2 control-label']) }}
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+        {{ Form::label('name', 'Name', ['class' => 'required col-md-2 control-label']) }}
         <div class="col-md-10">
             {{ Form::text('name', $band->name, ['class' => 'form-control', 'autofocus']) }}
+            <span id="name-help">@if($errors->has('name')){{ $errors->first('name') }}@endif</span>
         </div>
     </div>
 
@@ -34,7 +35,12 @@
         </div>
     </div>
     
-    <button class="btn btn-primary">Save</button>
+    <div class="form-group">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </div>
 </div>
 
 @push('js')

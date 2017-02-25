@@ -58,6 +58,8 @@ class BandController extends Controller
 	{
 		$band = Band::findOrFail($id);
 		
+		$this->validate($request, $band->rules);
+		
 		$band->update($request->except('_token'));
 		
 		return redirect('/');

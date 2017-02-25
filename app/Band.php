@@ -15,6 +15,10 @@ class Band extends Model
 	
     protected $table = 'bands';
 	
+	public $rules = [
+		'name' => 'required',
+	];
+	
 	/**
 	 * Get the band's App\Album[].
 	 * 
