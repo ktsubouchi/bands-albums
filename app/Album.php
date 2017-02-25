@@ -17,6 +17,11 @@ class Album extends Model
 		'genre',
 	];
 	
+	public $rules = [
+		'band_id' => 'required',
+		'name' => 'required',
+	];
+	
     protected $table = 'albums';
 	
 	/**
