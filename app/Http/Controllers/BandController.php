@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Band;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class BandController extends Controller
 {
