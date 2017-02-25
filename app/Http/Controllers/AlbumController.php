@@ -15,6 +15,10 @@ class AlbumController extends Controller
     {
 	    $albums = Album::all();
 	    
-	    return Datatables::of($albums)->make(true);
+	    return Datatables::of($albums)
+		    ->editColumn('band_id', function($album){
+			    return $album->band->name;
+		    })
+		    ->make(true);
     }
 }
