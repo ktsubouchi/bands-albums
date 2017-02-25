@@ -11,13 +11,14 @@
         <div>
             <span class="page-title">Edit Band</span>
         </div>
+
+        <h4>Albums</h4>
+        <ul style="list-style:none;">
+            @foreach($band->albums as $album)
+                <li>{{ $album->name }}</li>
+            @endforeach
+        </ul>
         
-        <span class="page-sub-title">{{ $band->name }}</span>
-
-        <span class="page-options">
-            
-        </span>
-
         <hr>
 
         {{ Form::model($band, ['action' => ['BandController@update', 'id' => $band->id]]) }}
