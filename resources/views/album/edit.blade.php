@@ -10,10 +10,13 @@
 @section('content')
     <div class="container">
         <div>
-            <span class="page-title">Edit Band</span>
+            <span class="page-title">Edit Album</span>
         </div>
-        
-        <span class="page-sub-title">{{ $album->band->name }}</span>
+
+        <h4>Band</h4>
+        <ul style="list-style:none;">
+            <li>{{ $album->band->name }}</li>
+        </ul>
 
         <hr>
 
