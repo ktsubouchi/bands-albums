@@ -46,4 +46,20 @@ class BandController extends Controller
 		
 		$band->delete();
     }
+	
+	public function edit($id)
+	{
+		$band = Band::findOrFail($id);
+		
+		return view('band.edit', compact('band'));
+	}
+	
+	public function update($id, Request $request)
+	{
+		$band = Band::findOrFail($id);
+		
+		$band->update($request->except('_token'));
+		
+		return redirect('/');
+	}
 }

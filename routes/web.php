@@ -13,6 +13,8 @@
 
 Route::get('/', 'SiteController@index');
 Route::post('band/{id}/delete', 'BandController@delete');
+Route::get('band/{id}/edit', 'BandController@edit');
+Route::post('band/{id}/update', 'BandController@update');
 
 Route::get('albums', 'SiteController@albums');
 
