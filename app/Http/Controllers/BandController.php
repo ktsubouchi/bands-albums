@@ -19,7 +19,7 @@ class BandController extends Controller
 		
 		return Datatables::of($bands)
 			->addColumn('edit', function($band){
-				return "<a href='' ><i class='fa fa-fw fa-pencil'</a>";
+				return "<a href='".action('BandController@edit', ['id' => $band->id])."'><i class='fa fa-fw fa-pencil'</a>";
 			})
 			->addColumn('delete', function($band){
 				return "<a href='#' class='delete-band' data-pk='$band->id'><i class='fa fa-fw fa-trash'</a>";
@@ -38,6 +38,12 @@ class BandController extends Controller
 	 */
 	public function delete($id)
 	{
-		Band::destroy($id);
+		$band = Band::findOrFail($id);
+		
+		foreach($band->albums as $album){
+			$album->delete();
+		}
+		
+		$band->delete();
     }
 }
